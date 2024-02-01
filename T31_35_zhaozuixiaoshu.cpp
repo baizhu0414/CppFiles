@@ -7,6 +7,7 @@ struct Node{
 	int y;
 };
 
+// true‘Ú≤ªΩªªª 
 bool cmpUp(Node a, Node b) {
 	if(a.x!=b.x) {
 		return a.x<b.x;
