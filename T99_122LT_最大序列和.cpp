@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 // max(dp[j]-dp[i])
-// 至少包含i在内的和最大的子式：dp[i]=max(dp[i-1]+list[i], list[i])
+// 至少包含i在内的和最大的子式：dp[i]=max(dp[i-1]+list[i], list[i]),取dp中最大值。 
 int main() {
 	int N;
 	// 1~i存数据
