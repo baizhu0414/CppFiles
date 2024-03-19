@@ -1,36 +1,38 @@
 #include<bits/stdc++.h>
 using namespace std;
+// µÝ¹é¼ÆËãÑî»ÔÈý½Ç
+ 
+int tri[31][31];
+int calculate(int i, int j) {
+	if(j==1|| i==j) {
+		return 1;
+	}
+	return calculate(i-1, j)+ calculate(i-1, j-1);
+}
 
 int main() {
 	int n;
 	while(cin>> n) {
-		int sanjiao[31][31];
-		for(int i=0; i<n; i++) {
-			for(int j=0; j<n; j++) {
-				sanjiao[i][j]=1;
+		for(int i=1; i<=n; i++) {
+			for(int j=1; j<=i; j++) {
+				tri[i][j]= calculate(i, j);
 			}
 		}
-		for(int i=0; i<n; i++) {
-			for(int j=0; j<n; j++) {
-				if(j!=0&& i!=j) {
-					sanjiao[i][j]=sanjiao[i-1][j-1]+ sanjiao[i-1][j];
+		for(int i=1; i<=n; i++) {
+			for(int j=1; j<=i; j++) {
+				if(j== 1) {
+					for(int k=0; k<n-i; k++) {
+						cout<< " ";
+					}
 				}
-			}
-		}
-		for(int i=0; i<n; i++) {
-			for(int j=0; j<=i; j++) {
-				string empty="";
-				for(int k=0; k<n-i-1&& j==0; k++) {
-					empty+=' ';
-				}
-				if(j==i) {
-					cout<< empty<< sanjiao[i][j];
+				if(i== j) {
+					cout<< tri[i][j]<< endl;
 				} else {
-					cout<< empty<< sanjiao[i][j]<< " ";
+					cout<< tri[i][j]<< " ";
 				}
 			}
-			cout<< endl;
 		}
 	}
 	return 0;
 }
+

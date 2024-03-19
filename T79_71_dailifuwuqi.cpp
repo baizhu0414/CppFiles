@@ -5,7 +5,6 @@ using namespace std;
 // tip:贪心---每次寻找访问最多ip的proxy地址。
 int process(string proxy[], int n, string ips[], int m) {
 	int count=0;
-	int idx=0;
 	// i++在此处会导致多跳一个ip，在操作i的情况下，考虑while循环，避免此错误。
 	for(int i=0; i<m; ) { 
 		int curMax=0;
@@ -19,8 +18,7 @@ int process(string proxy[], int n, string ips[], int m) {
 		if(curMax==0) { // 哪一次无法往后访问了，则失败。如：只有一个proxy切在ip中发生重复。
 			return -1;
 		}
-		idx+=curMax;
-		i=idx;
+		i+=curMax;
 		count++;
 	}
 	return count-1;// 第一次不算切换，因此选中8次，其实切换了7次。 
