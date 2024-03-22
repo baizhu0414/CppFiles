@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
-// Tools- Compiler Options- ¹´Ñ¡Add the following commands when calling the compilor: "-std=c++14" 
+// Tools-> Compiler Options
+// -> ¹´Ñ¡Add the following commands when calling the compilor:
+// ->Ìí¼Ó "-std=c++14" 
 int main() {
 	int n;
 	vector<int> list(3);
