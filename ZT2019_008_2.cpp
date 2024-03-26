@@ -18,9 +18,9 @@ int process(vector<int> list, int l, int r) {
 	int leftPlus= process(list, l, mid);
 	int rightPlus= process(list, mid+1, r);
 	
-	int midLeft=0;
-	int midRight=0;
-	int tempLeft=0;
+	int midLeft=0;// 左侧和的最大值 
+	int midRight=0;// 右侧和的最大值 
+	int tempLeft=0;// 暂存结果 
 	int tempRight=0;
 	// 遍历左侧所有和，求最大的 
 	for(int i=mid; i>=l; i--) {//等号忘了 

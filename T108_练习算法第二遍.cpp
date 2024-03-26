@@ -1,52 +1,27 @@
 #include<bits/stdc++.h>
 using namespace std;
-// 最长回文串：逆序后求公共子串 
-string reverse(string s) {
-	string rev= "";
-	for(int i=s.length()-1; i>=0; i--) {
-		rev+= s[i];
-	}
-	return rev;
-}
-int getLongestPalindrome(string A) {
-	string B= reverse(A);
-	int maxL= 0;
-	int x= 0, y=0;
-	int len= A.length();
-	int dp[len+1][len+1];
-	for(int i=0; i<=len; i++) {
-		dp[i][0]= 0;
-		dp[0][i]= 0;
-	}
-	cout<< "B="<< B<< endl;
-	for(int i=1; i<=len; i++) {
-		for(int j=1; j<=len; j++) {
-			if(A[i-1]== B[j-1]) {
-				dp[i][j]= dp[i-1][j-1]+ 1;
-			} else {
-				dp[i][j]= 0;
-			}
-			if(maxL< dp[i][j]) {
-				maxL= dp[i][j];
-				x= i;
-				y= j;
-			}
-		}
-	}
-	cout<< "x:"<< x<<"y:"<<y<< endl;
-	for(int i=0; i<=len; i++) {
-		for(int j=0; j<=len; j++) {
-			cout<< dp[i][j]<< " ";
-		}
-		cout<< endl;
-	}
-	return maxL;
-}
 
+// 用素数筛法找所有素数
 int main() {
-	string str;
-	cin>> str;
-	cout<< getLongestPalindrome(str)<< endl;
+	int n;
+	cin>> n;
+	vector<int> list(n+1, 1);// 标记数字是否已经被删除，删除设为0
+	vector<int> res;
+	list[0]=0;
+	list[1]=0; 
+	for(int i=2; i<=n; i++) {
+		if(list[i]!= 0) {
+			res.push_back(i);
+		}
+		int beishu= 2;
+		while(beishu*i<=n) {
+			list[beishu*i]= 0;
+			beishu++;
+		}
+	}
+	for(int i=0; i<res.size(); i++) {
+		cout<< res[i]<< " ";
+	}
+	cout<< endl;
 	return 0;
-}
-
+} 
